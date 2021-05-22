@@ -2,6 +2,10 @@
 
 Plugin Vue de componentes para criar sistema de grid.
 
+## Instalação
+
+`npm i -s @sneverton/vue-grid` or `yarn add @sneverton/vue-grid`
+
 ##### main.js
 
 ```js
