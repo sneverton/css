@@ -2,12 +2,12 @@ import { breakpoints, matcheBreakpoint } from "./config";
 
 const mixin = {
   data: () => ({
-    style: {}
+    style: {},
   }),
   computed: {
     matcheBreakpoint() {
       return matcheBreakpoint.media;
-    }
+    },
   },
   methods: {
     mountStyle() {
@@ -29,16 +29,16 @@ const mixin = {
           }
         }
       }
-    }
+    },
   },
   watch: {
     matcheBreakpoint() {
       this.mountStyle();
-    }
+    },
   },
   created() {
     this.mountStyle();
-  }
+  },
 };
 
 export default mixin;

@@ -1,0 +1,19 @@
+{
+  "name": "vue-grid",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "repository": "https://github.com/sneverton/grid-system.git",
+  "author": "Everton Andrade <everton@andrade.mat.br>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.27.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0"
+  },
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}

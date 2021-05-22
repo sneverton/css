@@ -4,7 +4,7 @@ const thresholds = {
   lg: 1920,
   md: 1280,
   sm: 960,
-  xs: 600
+  xs: 600,
 };
 
 const mediaMatches = {
@@ -21,7 +21,7 @@ const mediaMatches = {
     `(min-width: ${thresholds.md + 0.01}px) and (max-width: ${thresholds.lg}px)`
   ),
   lgAndUp: matchMedia(`(min-width: ${thresholds.md + 0.01}px)`),
-  xlOnly: matchMedia(`(min-width: ${thresholds.lg + 0.01}px)`)
+  xlOnly: matchMedia(`(min-width: ${thresholds.lg + 0.01}px)`),
 };
 
 const breakpoints = {
@@ -29,7 +29,7 @@ const breakpoints = {
   sm: () => mediaMatches.smAndUp.matches,
   md: () => mediaMatches.mdAndUp.matches,
   lg: () => mediaMatches.lgAndUp.matches,
-  xl: () => mediaMatches.xlOnly.matches
+  xl: () => mediaMatches.xlOnly.matches,
 };
 
 const matcheBreakpoint = Vue.observable({ media: null });
@@ -39,7 +39,7 @@ const matcheBreakpoint = Vue.observable({ media: null });
   mediaMatches.smOnly,
   mediaMatches.mdOnly,
   mediaMatches.lgOnly,
-  mediaMatches.xlOnly
-].forEach(m => (m.onchange = e => (matcheBreakpoint.media = e.target)));
+  mediaMatches.xlOnly,
+].forEach((m) => (m.onchange = (e) => (matcheBreakpoint.media = e.target)));
 
 export { breakpoints, matcheBreakpoint };

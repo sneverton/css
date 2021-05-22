@@ -1,6 +1,6 @@
 import { breakpoints } from "./config";
 
-const mountProps = props => {
+const mountProps = (props) => {
   const _props = {};
 
   for (let p of props) {
