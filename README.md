@@ -7,7 +7,7 @@ Plugin Vue de componentes para criar sistema de grid.
 ```js
 import Vue from "vue";
 import App from "./App.vue";
-import VueGrid from "vue-grid";
+import VueGrid from "@sneverton/vue-grid";
 
 Vue.config.productionTip = false;
 
