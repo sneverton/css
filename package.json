@@ -1,6 +1,6 @@
 {
   "name": "@sneverton/vue-grid",
-  "version": "1.0.1",
+  "version": "1.0.12",
   "main": "src/index.js",
   "type": "module",
   "repository": "https://github.com/sneverton/grid-system.git",
