@@ -1,11 +1,24 @@
 <template lang="pug">
 div
-  grid-list(col-width="120px", row-height="120px")
-    .item
-    .item
-    .item
-    .item
-    .item
+  grid-container(
+    cols="40px 40px 40px",
+    auto-rows="100px",
+    auto-rows-md="200px",
+    :layout="layout",
+    :layout-md="layoutMd"
+  )
+    template(#header)
+      .item
+    template(#main)
+      .item
+    template(#side)
+      .item
+    template(#banner)
+      .item
+    template(#side)
+      .item
+    template(#footer)
+      .item
 </template>
 
 <script>
@@ -14,6 +27,21 @@ import GridItem from "./../src/components/GridItem";
 import GridList from "./../src/components/GridList";
 
 export default {
+  data: () => ({
+    layout: [["header"], ["main"], ["side"], ["banner"], ["footer"]],
+    layoutMd: [
+      ["header", "header", "header"],
+      ["main", "main", "side"],
+      ["main", "main", "side"],
+      ["banner", "banner", "side"],
+      ["footer", "footer", "footer"],
+    ],
+  }),
+  beforeCreate() {
+    document.head.innerHTML =
+      document.head.innerHTML +
+      '<meta name=viewport content="width=device-width,initial-scale=1">';
+  },
   components: {
     GridContainer,
     GridItem,
@@ -30,7 +58,23 @@ body {
 
 .item {
   height: 100%;
+  width: 100%;
   background: cyan;
   border-radius: 12px;
+}
+.grid-area-header .item {
+  background: #f89427;
+}
+.grid-area-main.item {
+  background: #eb7171;
+}
+.grid-area-side .item {
+  background: #eb7171;
+}
+.grid-area-banner .item {
+  background: #e3d0e6;
+}
+.grid-area-footer .item {
+  background: #74c575;
 }
 </style>

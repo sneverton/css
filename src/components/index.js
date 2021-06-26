@@ -1,5 +1,5 @@
-import GridContainer from "./GridContainer";
-import GridItem from "./GridItem";
-import GridList from "./GridList";
+import GridContainer from "./GridContainer.vue";
+import GridItem from "./GridItem.vue";
+import GridList from "./GridList.vue";
 
-export default [GridContainer, GridItem, GridList];
+export default { GridContainer, GridItem, GridList };

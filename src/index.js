@@ -1,5 +1,6 @@
-import components from "./components";
+import install from "./install.js";
 
-const VueGrid = (Vue) => components.forEach((c) => Vue.component(c.name, c));
+const VueGrid = { install };
 
+export * from "./components/index.js";
 export default VueGrid;

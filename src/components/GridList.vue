@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import mixin from "../mixin.js";
-import mountProps from "../mountProps.js";
+import mixin from "./mixin.js";
+import mountProps from "../utils/mountProps.js";
 
 const propsCSS = {
   gap: "gap",
@@ -15,7 +15,7 @@ const propsCSS = {
 
 export default {
   name: "grid-list",
-  props: mountProps(Object.keys(propsCSS)),
+  props: mountProps(propsCSS),
   data: () => ({
     propsCSS,
   }),
