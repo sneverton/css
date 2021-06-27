@@ -1,9 +1,11 @@
 <template lang="pug">
 div
   grid-container(
-    cols="40px 40px 40px",
+    cols="300px",
+    cols-md="300px 300px 300px",
     auto-rows="100px",
     auto-rows-md="200px",
+    justify="center",
     :layout="layout",
     :layout-md="layoutMd"
   )
@@ -19,6 +21,13 @@ div
       .item
     template(#footer)
       .item
+  br
+  grid-list(col-width="200px", col-width-md="300px", row-height="200px")
+    grid-item.item(col-end-sm="3", col-end-md="auto")
+    .item
+    .item
+    .item
+    .item
 </template>
 
 <script>

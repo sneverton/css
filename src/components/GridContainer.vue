@@ -1,5 +1,5 @@
 <template lang="pug">
-.grid-container(:style="style")
+.grid-container(:style="style", :class="classes")
   div(
     v-for="area in gridAreas",
     :key="area",
@@ -15,17 +15,34 @@ import mixin from "./mixin.js";
 import mountProps from "../utils/mountProps.js";
 
 const propsCSS = {
-  cols: "grid-template-columns",
-  rows: "grid-template-rows",
-  autoRows: "grid-auto-rows",
-  autoCols: "grid-auto-columns",
-  gap: "gap",
-  autoFlow: "grid-auto-flow",
-  justify: "justify-content",
-  alignItems: "align-items",
-  alignContent: "align-content",
+  cols: {
+    type: String,
+  },
+  rows: {
+    type: String,
+  },
+  autoRows: {
+    type: String,
+  },
+  autoCols: {
+    type: String,
+  },
+  gap: {
+    type: String,
+  },
+  autoFlow: {
+    type: String,
+  },
+  justify: {
+    type: String,
+  },
+  alignItems: {
+    type: String,
+  },
+  alignContent: {
+    type: String,
+  },
   layout: {
-    name: "grid-template-areas",
     type: Array,
     default: () => [],
     parse: (v) =>
@@ -52,8 +69,5 @@ export default {
 </script>
 
 <style>
-.grid-container {
-  display: grid !important;
-  gap: 20px;
-}
+@import url(../style/grid-container.css);
 </style>

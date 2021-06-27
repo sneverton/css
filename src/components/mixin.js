@@ -1,48 +1,30 @@
-import breakpoints from "../utils/breakpoints";
-
 const mixin = {
-  data: () => ({
-    breakpoint: null,
-    style: {}
-  }),
-  methods: {
-    mountStyle() {
-      this.style = {};
+  computed: {
+    style() {
+      const style = {},
+        regExp = /(Sm|Md|Xl|Lg)$/;
 
-      for (let b in breakpoints) {
-        const regExp = new RegExp(`${b}$`);
+      for (let prop in this.$options.propsData) {
+        const bp = prop.match(regExp),
+          mainProp = bp ? prop.slice(0, -2) : prop;
 
-        if (breakpoints[b]()) {
-          for (let prop in this.$options.propsData) {
-            const bp = prop.toLowerCase().match(regExp),
-              mainProp = bp ? prop.slice(0, -2) : prop;
-
-            if (typeof this.propsCSS[mainProp] === "object") {
-              if (bp) {
-                this.style[this.propsCSS[mainProp].name] = this.propsCSS[
-                  mainProp
-                ].parse(this[prop]);
-              } else if (!this.style[this.propsCSS[mainProp].name]) {
-                this.style[this.propsCSS[mainProp].name] = this.propsCSS[
-                  mainProp
-                ].parse(this[mainProp]);
-              }
-            } else {
-              if (bp) {
-                this.style[this.propsCSS[mainProp]] = this[prop];
-              } else if (!this.style[this.propsCSS[mainProp]]) {
-                this.style[this.propsCSS[mainProp]] = this[mainProp];
-              }
-            }
-          }
-        }
+        style["--grid-" + prop.replace(/([A-Z])/g, "-$1").toLowerCase()] = this
+          .propsCSS[mainProp].parse
+          ? this.propsCSS[mainProp].parse(this[prop])
+          : this[prop];
       }
-    }
-  },
-  created() {
-    this.mountStyle();
 
-    window.addEventListener("resize", () => this.mountStyle());
+      return style;
+    },
+    classes() {
+      const classes = [];
+
+      for (let prop in this.$options.propsData) {
+        classes.push("grid-" + prop.replace(/([A-Z])/g, "-$1").toLowerCase());
+      }
+
+      return classes;
+    }
   }
 };
 

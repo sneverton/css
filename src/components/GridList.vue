@@ -1,5 +1,5 @@
 <template lang="pug">
-.grid-list(:style="style")
+.grid-list(:style="style", :class="classes")
   slot
 </template>
 
@@ -8,9 +8,24 @@ import mixin from "./mixin.js";
 import mountProps from "../utils/mountProps.js";
 
 const propsCSS = {
-  gap: "gap",
-  colWidth: "--col-width",
-  rowHeight: "--row-height",
+  colWidth: {
+    type: String,
+  },
+  rowHeight: {
+    type: String,
+  },
+  gap: {
+    type: String,
+  },
+  justify: {
+    type: String,
+  },
+  alignItems: {
+    type: String,
+  },
+  alignContent: {
+    type: String,
+  },
 };
 
 export default {
@@ -24,12 +39,5 @@ export default {
 </script>
 
 <style>
-.grid-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, var(--col-width));
-  grid-auto-rows: var(--row-height);
-  gap: 20px;
-  width: 100%;
-  justify-content: center;
-}
+@import url(../style/grid-list.css);
 </style>

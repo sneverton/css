@@ -1,5 +1,5 @@
 <template lang="pug">
-.grid-item(:style="style")
+.grid-item(:style="style", :class="classes")
   slot
 </template>
 
@@ -8,10 +8,18 @@ import mixin from "./mixin.js";
 import mountProps from "../utils/mountProps.js";
 
 const propsCSS = {
-  colStart: "--col-start",
-  colEnd: "--col-end",
-  rowStart: "--row-start",
-  rowEnd: "--row-end",
+  colStart: {
+    type: String,
+  },
+  colEnd: {
+    type: String,
+  },
+  rowStart: {
+    type: String,
+  },
+  rowEnd: {
+    type: String,
+  },
 };
 
 export default {
@@ -26,10 +34,5 @@ export default {
 
 
 <style>
-.grid-item {
-  grid-column-start: span var(--col-start);
-  grid-column-end: span var(--col-end);
-  grid-row-start: span var(--row-start);
-  grid-row-end: span var(--row-end);
-}
+@import url(../style/grid-item.css);
 </style>
