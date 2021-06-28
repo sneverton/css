@@ -1,20 +1,15 @@
 ## Introdução
 
-Plugin Vue de componentes para criar sistema de grid.
+Plugin Vue de componentes para utilizar Grid Layout.
 
-##### main.js
 
 ```js
-import Vue from "vue";
-import App from "./App.vue";
-import VueGrid from "@sneverton/vue-grid";
+// src/main.js
 
-Vue.config.productionTip = false;
+import Vue from 'vue'
+import VueGrid from "@sneverton/vue-grid";
 
 Vue.use(VueGrid);
 
-new Vue({
-  store,
-  render: (h) => App,
-}).$mount("#app");
+new Vue().$mount('#app')
 ```
