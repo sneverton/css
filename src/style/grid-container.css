@@ -3,7 +3,6 @@
 
 .grid-container {
   display: grid !important;
-  gap: 20px;
 }
 .grid-cols {
   grid-template-columns: var(--grid-cols);
