@@ -10,9 +10,11 @@
   slot(name="default")
 </template>
 
-<script>
-import mixin from "./mixin.js";
-import mountProps from "../utils/mountProps.js";
+<script lang="ts">
+import Vue from "vue";
+import mixin from "./mixin";
+import mountProps from "../utils/mountProps";
+import "../style/grid-container.css";
 
 const propsCSS = {
   cols: {
@@ -45,7 +47,7 @@ const propsCSS = {
   layout: {
     type: Array,
     default: () => [],
-    parse: (v) =>
+    parse: (v: string[][]) =>
       v
         .map((row) => row.join(" "))
         .map((r) => `"${r}"`)
@@ -53,7 +55,7 @@ const propsCSS = {
   },
 };
 
-export default {
+export default Vue.extend({
   name: "grid-container",
   props: mountProps(propsCSS),
   data: () => ({
@@ -65,9 +67,5 @@ export default {
     },
   },
   mixins: [mixin],
-};
+});
 </script>
-
-<style>
-@import url(../style/grid-container.css);
-</style>

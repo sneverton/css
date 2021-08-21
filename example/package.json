@@ -1,12 +1,14 @@
 {
-  "name": "@sneverton/vue-grid",
-  "version": "2.0.0",
-  "main": "src/main.ts",
-  "repository": "https://github.com/sneverton/grid-system.git",
-  "author": "Everton Andrade <everton@andrade.mat.br>",
-  "license": "MIT",
+  "name": "test",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.18.0",
@@ -14,16 +16,12 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
-    "prettier": "^2.2.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
-    "typescript": "^4.3.5",
-    "vue": "^2.6.14",
+    "typescript": "~4.1.5",
     "vue-template-compiler": "^2.6.11"
   }
 }

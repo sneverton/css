@@ -3,9 +3,11 @@
   slot
 </template>
 
-<script>
-import mixin from "./mixin.js";
-import mountProps from "../utils/mountProps.js";
+<script lang="ts">
+import Vue from "vue";
+import mixin from "./mixin";
+import mountProps from "../utils/mountProps";
+import "../style/grid-item.css";
 
 const propsCSS = {
   colStart: {
@@ -22,17 +24,12 @@ const propsCSS = {
   },
 };
 
-export default {
+export default Vue.extend({
   name: "grid-item",
   props: mountProps(propsCSS),
   data: () => ({
     propsCSS,
   }),
   mixins: [mixin],
-};
+});
 </script>
-
-
-<style>
-@import url(../style/grid-item.css);
-</style>

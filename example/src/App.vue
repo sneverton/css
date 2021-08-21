@@ -30,12 +30,11 @@ div
     .item
 </template>
 
-<script>
-import GridContainer from "./../src/components/GridContainer";
-import GridItem from "./../src/components/GridItem";
-import GridList from "./../src/components/GridList";
+<script lang="ts">
+import Vue from "vue";
+import { GridContainer, GridItem, GridList } from "../../";
 
-export default {
+export default Vue.extend({
   data: () => ({
     layout: [["header"], ["main"], ["side"], ["banner"], ["footer"]],
     layoutMd: [
@@ -46,17 +45,12 @@ export default {
       ["footer", "footer", "footer"],
     ],
   }),
-  beforeCreate() {
-    document.head.innerHTML =
-      document.head.innerHTML +
-      '<meta name=viewport content="width=device-width,initial-scale=1">';
-  },
   components: {
     GridContainer,
     GridItem,
     GridList,
   },
-};
+});
 </script>
 
 <style>
