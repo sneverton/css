@@ -1,4 +1,4 @@
-import { Mixin } from "../@types/vue-grid";
+import { Mixin } from "../../types/vue-grid";
 
 const mixin: Mixin = {
   computed: {
