@@ -1,11 +1,12 @@
 {
   "name": "@sneverton/vue-grid",
-  "version": "2.0.0",
-  "main": "src/main.ts",
+  "version": "2.0.1",
+  "main": "./dist/vue-grid.common.js",
   "repository": "https://github.com/sneverton/grid-system.git",
   "author": "Everton Andrade <everton@andrade.mat.br>",
   "license": "MIT",
   "scripts": {
+    "build": "vue-cli-service build --target lib --inline-vue --name vue-grid src/main.ts",
     "lint": "vue-cli-service lint"
   },
   "types": "./types/vue-grid.d.ts",
