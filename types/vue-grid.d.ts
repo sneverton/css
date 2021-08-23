@@ -12,12 +12,6 @@ export interface Mixin {
   };
 }
 
-declare module "vue-grid" {
-  import install from "./../install";
+declare const VueGrid: PluginObject<never>;
 
-  const VueGrid = { install };
-
-  export * from "./../components/index";
-
-  export default VueGrid;
-}
+export default VueGrid;
