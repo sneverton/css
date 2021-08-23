@@ -1,6 +1,6 @@
 {
   "name": "@sneverton/vue-grid",
-  "version": "2.1.0",
+  "version": "2.0.2",
   "main": "./dist/vue-grid.common.js",
   "repository": "https://github.com/sneverton/grid-system.git",
   "author": "Everton Andrade <everton@andrade.mat.br>",
