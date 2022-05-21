@@ -1,14 +1,11 @@
-import { VueConstructor } from "vue";
-import GridContainer from "./GridContainer.vue";
-import GridItem from "./GridItem.vue";
-import GridList from "./GridList.vue";
+import GridContainer from "./GridContainer/GridContainer.vue";
+import GridItem from "./GridItem/GridItem.vue";
+import GridList from "./GridList/GridList.vue";
 
-const components: Record<string, VueConstructor> = {
+export { GridContainer, GridItem, GridList };
+
+export default {
   GridContainer,
   GridItem,
   GridList,
 };
-
-export { GridContainer, GridItem, GridList };
-
-export default components;

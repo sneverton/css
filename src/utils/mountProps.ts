@@ -1,22 +1,17 @@
-import { PropOptions } from "vue/types/options";
+import type { MountProps, Props } from "types";
 
-const breakpoints = ["sm", "md", "xl", "lg"];
+const breakpoints = ["Sm", "Md", "Xl", "Lg"];
 
-type Props = Record<string, PropOptions>;
+const mountProps = function <PP extends Props>(props: PP): MountProps<PP> {
+  const mountedProps = Object.entries(props).reduce((r, [key, val]) => {
+    r[key] = val;
 
-const mountProps = (props: Props): Props => {
-  const _props: Props = {};
+    breakpoints.forEach((bp) => (r[`${key}${bp}`] = val));
 
-  for (const p in props) {
-    _props[p] = { type: props[p].type, default: props[p].default };
-    for (const bp of breakpoints)
-      _props[`${p}-${bp}`] = {
-        type: props[p].type,
-        default: props[p].default,
-      };
-  }
+    return r;
+  }, {} as Props);
 
-  return _props;
+  return mountedProps as MountProps<PP>;
 };
 
-export default mountProps;
+export { mountProps };

@@ -1,8 +1,10 @@
-import { PluginFunction } from "vue";
+import type { InstallFunction } from "types";
 import components from "./components";
 
-const install: PluginFunction<never> = (Vue) => {
-  for (const name in components) Vue.component(name, components[name]);
+const install: InstallFunction = (Vue) => {
+  Object.entries(components).forEach(([name, component]) =>
+    Vue.component(name, component)
+  );
 };
 
-export default install;
+export { install };

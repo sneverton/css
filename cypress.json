@@ -1,0 +1,8 @@
+{
+  "fixturesFolder": false,
+  "supportFile": false,
+  "component": {
+    "componentFolder": "src",
+    "testFiles": "**/*.spec.{ts,tsx}"
+  }
+}
