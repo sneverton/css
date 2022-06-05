@@ -1,87 +1,28 @@
 <script setup lang="ts">
-import { gridListProps } from "./gridListProps";
+import { CSSProps, mountedsProps } from "./gridListProps";
 import { useGridStyle } from "@/composables/useGridStyle";
-import { computed } from "vue";
+import { useParseProps } from "@/composables/useParseProps";
 
-const props = defineProps(gridListProps);
+const props = defineProps(mountedsProps);
 
-const parseItemWidth = (val: typeof props.itemWidth) =>
-  val && `repeat(auto-fit, ${val})`;
-
-const propsParsed = computed(() => {
-  const r: Record<string, unknown> = { ...props };
-
-  r.itemWidth = parseItemWidth(props.itemWidth);
-  r.itemWidthSm = parseItemWidth(props.itemWidthSm);
-  r.itemWidthMd = parseItemWidth(props.itemWidthMd);
-  r.itemWidthXl = parseItemWidth(props.itemWidthXl);
-  r.itemWidthLg = parseItemWidth(props.itemWidthLg);
-
-  return r;
+const { parsedProps } = useParseProps(props, {
+  itemWidth: {
+    number: (v) => `repeat(auto-fit, ${v}fr)`,
+    string: (v) => `repeat(auto-fit, ${v})`,
+  },
+  itemHeight: {
+    number: (v) => `${v}px`,
+  },
+  gap: {
+    number: (v) => `${v}px`,
+  },
 });
 
-const { style } = useGridStyle(propsParsed.value);
+const { style } = useGridStyle(parsedProps.value, CSSProps);
 </script>
 
 <template>
-  <div class="grid-list" :style="style">
+  <div class="grid-list" :style="{ ...style, display: 'grid !important' }">
     <slot></slot>
   </div>
 </template>
-
-<style lang="scss">
-@use "./../../style/variables" as bp;
-
-$props: (
-  "item-width": "grid-template-columns",
-  "item-height": "grid-auto-rows",
-  "justify": "justify-content",
-  "align-items": "align-items",
-  "align-content": "align-content",
-  "gap": "gap",
-);
-
-.grid-list {
-  display: grid !important;
-
-  @each $prop, $style in $props {
-    #{$style}: var(--grid-#{$prop});
-  }
-
-  @media screen and (min-width: bp.$sm) {
-    @each $prop, $style in $props {
-      #{$style}: var(--grid-#{$prop}-sm, var(--grid-#{$prop}));
-    }
-  }
-
-  @media screen and (min-width: bp.$md) {
-    @each $prop, $style in $props {
-      #{$style}: var(
-        --grid-#{$prop}-md,
-        var(--grid-#{$prop}-sm, var(--grid-#{$prop}))
-      );
-    }
-  }
-
-  @media screen and (min-width: bp.$lg) {
-    @each $prop, $style in $props {
-      #{$style}: var(
-        --grid-#{$prop}-lg,
-        var(--grid-#{$prop}-md, var(--grid-#{$prop}-sm, var(--grid-#{$prop})))
-      );
-    }
-  }
-
-  @media screen and (min-width: bp.$xl) {
-    @each $prop, $style in $props {
-      #{$style}: var(
-        --grid-#{$prop}-xl,
-        var(
-          --grid-#{$prop}-lg,
-          var(--grid-#{$prop}-md, var(--grid-#{$prop}-sm, var(--grid-#{$prop})))
-        )
-      );
-    }
-  }
-}
-</style>

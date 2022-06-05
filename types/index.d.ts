@@ -13,37 +13,65 @@ export declare type MountProps<PP extends Props> = PP & {
 export declare const GridContainer: vue.DefineComponent<
   MountProps<{
     areas: vue.PropType<string[][]>;
-    cols: StringConstructor;
-    rows: StringConstructor;
-    gap: StringConstructor;
-    justify: StringConstructor;
-    alignItems: StringConstructor;
-    alignContent: StringConstructor;
-    autoRows: StringConstructor;
-    autoCols: StringConstructor;
-    autoFlow: StringConstructor;
+    cols: vue.PropType<number | (string | number)[] | string>;
+    rows: vue.PropType<number | (string | number)[] | string>;
+    gap: vue.PropType<number | string>;
+    justify: vue.PropType<
+      "flex-start" | "flex-end" | "center" | "space-between" | "space-around"
+    >;
+    alignItems: vue.PropType<
+      "flex-start" | "flex-end" | "center" | "baseline" | "stretch"
+    >;
+    alignContent: vue.PropType<
+      | "flex-start"
+      | "flex-end"
+      | "center"
+      | "space-between"
+      | "space-around"
+      | "stretch"
+    >;
+    autoRows: vue.PropType<number | (string | number)[] | string>;
+    autoCols: vue.PropType<number | (string | number)[] | string>;
+    autoFlow: string;
   }>,
   () => JSX.Element
 >;
 
 export declare const GridList: vue.DefineComponent<
   MountProps<{
-    itemWidth: StringConstructor;
-    itemHeight: StringConstructor;
-    gap: StringConstructor;
-    justify: StringConstructor;
-    alignItems: StringConstructor;
-    alignContent: StringConstructor;
+    itemWidth: vue.PropType<number | string>;
+    itemHeight: vue.PropType<number | string>;
+    gap: vue.PropType<number | string>;
+    justify: vue.PropType<
+      "flex-start" | "flex-end" | "center" | "space-between" | "space-around"
+    >;
+    alignItems: vue.PropType<
+      "flex-start" | "flex-end" | "center" | "baseline" | "stretch"
+    >;
+    alignContent: vue.PropType<
+      | "flex-start"
+      | "flex-end"
+      | "center"
+      | "space-between"
+      | "space-around"
+      | "stretch"
+    >;
   }>,
   () => JSX.Element
 >;
 
 export declare const GridItem: vue.DefineComponent<
   MountProps<{
-    colStart: StringConstructor;
-    colEnd: StringConstructor;
-    rowStart: StringConstructor;
-    rowEnd: StringConstructor;
+    area: vue.PropType<number | (string | number)[] | string>;
+    col: vue.PropType<number | (string | number)[] | string>;
+    row: vue.PropType<number | (string | number)[] | string>;
+    colStart: vue.PropType<number | string>;
+    colEnd: vue.PropType<number | string>;
+    rowStart: vue.PropType<number | string>;
+    rowEnd: vue.PropType<number | string>;
+    alignSelf: PropType<
+      "flex-start" | "flex-end" | "center" | "baseline" | "auto" | "stretch"
+    >;
   }>,
   () => JSX.Element
 >;

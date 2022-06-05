@@ -1,10 +1,27 @@
 <script setup lang="ts">
 import { useGridStyle } from "@/composables/useGridStyle";
-import { gridItemProps } from "./gridItemProps";
+import { useParseProps } from "@/composables/useParseProps";
+import { CSSProps, mountedsProps } from "./gridItemProps";
 
-const props = defineProps(gridItemProps);
+const props = defineProps(mountedsProps);
 
-const { style } = useGridStyle(props);
+const { parsedProps } = useParseProps(props, {
+  area: {
+    array: (v: (string | number)[]) =>
+      v.map((c) => (typeof c === "number" ? `${c}` : c)).join(" / "),
+    number: (v) => v.toString(),
+  },
+  col: {
+    array: (v: (string | number)[]) =>
+      v.map((c) => (typeof c === "number" ? `${c}` : c)).join(" / "),
+  },
+  row: {
+    array: (v: (string | number)[]) =>
+      v.map((c) => (typeof c === "number" ? `${c}` : c)).join(" / "),
+  },
+});
+
+const { style } = useGridStyle(parsedProps.value, CSSProps);
 </script>
 
 <template>
@@ -12,56 +29,3 @@ const { style } = useGridStyle(props);
     <slot></slot>
   </div>
 </template>
-
-<style lang="scss">
-@use "./../../style/variables" as bp;
-
-$props: (
-  "col-start": "grid-column-start",
-  "col-end": "grid-column-end",
-  "row-start": "grid-row-start",
-  "row-end": "grid-row-end",
-);
-
-.grid-item {
-  @each $prop, $style in $props {
-    #{$style}: var(--grid-#{$prop});
-  }
-
-  @media screen and (min-width: bp.$sm) {
-    @each $prop, $style in $props {
-      #{$style}: var(--grid-#{$prop}-sm, var(--grid-#{$prop}));
-    }
-  }
-
-  @media screen and (min-width: bp.$md) {
-    @each $prop, $style in $props {
-      #{$style}: var(
-        --grid-#{$prop}-md,
-        var(--grid-#{$prop}-sm, var(--grid-#{$prop}))
-      );
-    }
-  }
-
-  @media screen and (min-width: bp.$lg) {
-    @each $prop, $style in $props {
-      #{$style}: var(
-        --grid-#{$prop}-lg,
-        var(--grid-#{$prop}-md, var(--grid-#{$prop}-sm, var(--grid-#{$prop})))
-      );
-    }
-  }
-
-  @media screen and (min-width: bp.$xl) {
-    @each $prop, $style in $props {
-      #{$style}: var(
-        --grid-#{$prop}-xl,
-        var(
-          --grid-#{$prop}-lg,
-          var(--grid-#{$prop}-md, var(--grid-#{$prop}-sm, var(--grid-#{$prop})))
-        )
-      );
-    }
-  }
-}
-</style>

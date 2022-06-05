@@ -54,7 +54,11 @@ describe("GridContainer", () => {
       },
       slots: {
         header: h("div", { class: "item" }),
-        main: h("div", { class: "item" }),
+        main: h(GridContainer, {
+          class: "item",
+          cols: 2,
+          rows: 2,
+        }),
         banner: h("div", { class: "item" }),
         side: h("div", { class: "item" }),
         footer: h("div", { class: "item" }),

@@ -4,8 +4,10 @@ import GridList from "./GridList/GridList.vue";
 
 export { GridContainer, GridItem, GridList };
 
-export default {
+const components: Record<string, any> = {
   GridContainer,
   GridItem,
   GridList,
 };
+
+export default components;

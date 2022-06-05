@@ -1,6 +1,7 @@
+import { Breakpoints } from "@/enums/Breakpoints";
 import type { MountProps, Props } from "types";
 
-const breakpoints = ["Sm", "Md", "Xl", "Lg"];
+const breakpoints = Object.values(Breakpoints);
 
 const mountProps = function <PP extends Props>(props: PP): MountProps<PP> {
   const mountedProps = Object.entries(props).reduce((r, [key, val]) => {

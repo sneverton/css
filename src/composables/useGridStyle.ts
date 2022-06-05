@@ -1,18 +1,41 @@
-import { camelCaseToKebabCase } from "@/utils/camelCaseToKebabCase";
 import { computed, type ComputedRef } from "vue";
+import { useMedia } from "./useMedia";
 
-type UseGridStyle = (props: Record<string, unknown>) => {
-  style: ComputedRef<Record<string, unknown>>;
+type UseGridStyle = (
+  props: Record<string, string | undefined>,
+  CSSProps: Record<string, string>
+) => {
+  style: ComputedRef<Record<string, string>>;
 };
 
-const useGridStyle: UseGridStyle = (props) => {
-  const style = computed(() => {
-    const entries = Object.entries(props).map(([prop, val]) => [
-      `--grid-${camelCaseToKebabCase(prop)}`,
-      val,
-    ]);
+const regexps: Record<string, RegExp> = {
+  Xl: /Xl$/,
+  Lg: /Lg$/,
+  Md: /Md$/,
+  Sm: /Sm$/,
+  Xs: /[^(Sm|Md|Lg|Xl)]$/,
+};
 
-    return Object.fromEntries(entries);
+const breakpoints = useMedia();
+
+const useGridStyle: UseGridStyle = (props, CSSProps) => {
+  const style = computed(() => {
+    const style: Record<string, string> = {};
+
+    for (const key in props) {
+      const val = props[key];
+
+      if (!val) continue;
+      for (const bp in regexps) {
+        if (breakpoints[bp].value && regexps[bp].test(key)) {
+          const removedSufix = key.replace(/(Sm|Md|Lg|Xl)/, "");
+
+          style[CSSProps[removedSufix]] = val;
+        }
+      }
+    }
+
+    return style;
   });
 
   return {

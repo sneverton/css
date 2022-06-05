@@ -45,29 +45,22 @@ describe("GridItem", () => {
       slots: {
         default: [
           h(GridItem, {
-            cosStartMd: "1",
-            colEndMd: "span 3",
+            colMd: [1, "span 3"],
           }),
           h(GridItem, {
-            cosStartMd: "1",
-            colEndMd: "span 2",
-            rowStartMd: "2",
-            rowEndMd: "span 2",
+            areaMd: [2, 1, "span 2", "span 2"],
           }),
           h(GridItem, {
-            cosStartMd: "3",
-            rowStartMd: "2",
-            rowEndMd: "span 3",
+            colStartMd: "3",
+            rowMd: ["2", "span 3"],
           }),
           h(GridItem, {
-            cosStartMd: "1",
-            colEndMd: "span 2",
-            rowStartMd: "4",
+            colMd: [1, "span 2"],
+            rowStartMd: 4,
           }),
           h(GridItem, {
-            cosStartMd: "1",
-            colEndMd: "span 3",
-            rowStartMd: "5",
+            colMd: [1, "span 3"],
+            rowStartMd: 5,
           }),
         ],
       },
